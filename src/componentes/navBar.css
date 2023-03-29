@@ -13,12 +13,7 @@
 
 }
 
-.navButton{
-    display: flex;
-    padding: 10px;
-    margin-left: 20px;
-    text-align: center;
-}
+
 .divNameShop{
     display: flex;
     align-items: center;

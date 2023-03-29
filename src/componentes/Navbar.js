@@ -1,5 +1,6 @@
 import './navBar.css'
 import CartWidget from './CartWidget';
+import Button from './Button';
 
 function Navbar() {
     return (
@@ -7,15 +8,9 @@ function Navbar() {
             <header>
                 <nav className="headerNav">
                     <div className='navDiv'>
-                        <button className='navButton'>
-                            Headphones
-                        </button>
-                        <button className='navButton'>
-                            Speakers
-                        </button>
-                        <button className='navButton'>
-                            SoundCards
-                        </button>
+                        <Button buttonName = 'Headphones'/>
+                        <Button buttonName = 'Speakers'/>
+                        <Button buttonName = 'SoundCards'/>
                     </div>
                     <div className='divNameShop'>
                         <span className='divSpan'>

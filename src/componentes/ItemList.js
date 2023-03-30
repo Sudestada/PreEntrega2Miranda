@@ -1,13 +1,16 @@
 import { Item } from "./Item";
 import './itemList.css'
 
-function ItemList({products}) {
+function ItemList({ products }) {
     return (
         <div className="styleList">
-            {products.map(products => <Item key = {products.id} {...products}/>
-                
-            )}
+            <div>
+                {products.map(products => <Item key={products.id} {...products} />
+
+                )}
+            </div>
         </div>
+
     )
 
 }

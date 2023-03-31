@@ -89,19 +89,10 @@ const products = [{
                 description: 'Yamaha 4 cuerdas TRBX',
         
             },
-            {
-                id: '10',
-                brand: 'Warwick',
-                price: 185000,
-                category: 'bass',
-                img: 'https://http2.mlstatic.com/D_NQ_NP_726861-MLA45043432910_032021-W.webp',
-                stock: 5,
-                description: 'Warwick Rockbass Corvette',
             
-            },
                 {
                     id: '11',
-                    brand: 'Pqrquer',
+                    brand: 'Parquer',
                     price: 170000,
                     category: 'bass',
                     img: 'https://http2.mlstatic.com/D_NQ_NP_782206-MLA31912048770_082019-W.webp',
@@ -109,16 +100,7 @@ const products = [{
                     description: 'Parquer Jazz bass Natural ',
             
                 },
-                {
-                    id: '12',
-                    brand: 'Ibanez',
-                    price: 234000,
-                    category: 'bass',
-                    img: 'https://http2.mlstatic.com/D_NQ_NP_986258-MLA46317958898_062021-W.webp',
-                    stock: 5,
-                    description: 'Ibanez Jaguar',
-            
-                },
+                
                 {
                     id: '13',
                     brand: 'Pearl',

@@ -1,6 +1,6 @@
 .headerNav{
     display: flex;
-    background-color: salmon;
+    background-color: #333333;
     justify-content: space-between;
     height: 10vh;
 
@@ -16,12 +16,16 @@
 
 .divNameShop{
     display: flex;
+    justify-content: center;
     align-items: center;
+    background-color: #2196F3;
     
 }
 .divSpan{
+    
     font-family: serif;
     font-size: 30px;
+    
     
 }
 .divCart{

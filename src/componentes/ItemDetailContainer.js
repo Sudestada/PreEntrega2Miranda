@@ -1,14 +1,16 @@
 import { Item } from "./Item";
 
 
-const ItemDetailContainer = () =>{
+const ItemDetailContainer = () => {
 
     return (
-        <>
-        <h3>Detalle de productos</h3>
-        <Item />
-        </>
-        
+        <div>
+            <h3>Detalle de productos</h3>
+            <Item />
+        </div>
+
+
+
     )
 }
 

@@ -1,0 +1,22 @@
+.card {
+    margin: 50px;
+    background-color: white;
+    border-radius: 10%;
+    color: black;
+
+
+}
+
+.divTitle {
+    display: flex;
+    justify-content: center;
+}
+
+.divImage {
+    display: flex;
+    justify-content: center;
+}
+
+.divDescription {
+    font-weight: 700;
+}

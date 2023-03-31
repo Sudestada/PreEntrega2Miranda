@@ -1,10 +1,12 @@
-.styleList{
 
+.styleList{
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 3fr;
+    grid-template-rows: auto;
+    background-color: black;
+    color: white;
     
-    justify-content: center;
-    background-color: orange;
-    display: flex;
-    justify-content: center;
 
     
 }
+

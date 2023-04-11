@@ -1,7 +1,18 @@
 import './item.css'
-export const Item = ({ brand, img, price, description }) => {
+import {Link} from "react-router-dom"
+
+
+
+
+export const Item = ({ id, brand, img, price, description }) => {
+    
+    const handleClick = (e) => {
+        console.log(e)
+        e.preventDefault()
+        e.stopPropagation()
+    }
     return (
-        <div className='card'>
+        <div className='card' onClick={handleClick}>
             <div className='divTitle'>
                 <h3>Marca : {brand}</h3>
             </div>
@@ -12,9 +23,12 @@ export const Item = ({ brand, img, price, description }) => {
             <div className='divDescription'>
                 <p>Precio : $ {price}</p>
                 <p>Descripcion : {description}</p>
+                <Link to={`/Item/${id}`}>Ver detalle</Link>
             </div>
 
         </div>
     )
 
 }
+
+export default Item;

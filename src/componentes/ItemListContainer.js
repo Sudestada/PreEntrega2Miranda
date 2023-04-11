@@ -1,22 +1,36 @@
-import { getProducts } from "./asyncMock";
+
+import {getProducts, getProductsByCategory} from "./asyncMock";
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 
 function ItemListcontainer({ greeting }) {
+    const [loading, setLoading] = useState(true)
     const [products, setProducts] = useState([])
     const { categoryId } = useParams()
 
     console.log(categoryId)
     useEffect(() => {
-
-        getProducts()
+        const asyncFuntion = categoryId ? getProductsByCategory : getProducts
+        asyncFuntion(categoryId)
             .then(products => {
                 setProducts(products)
 
             })
+            .catch(Error =>{
+                console.log(Error)
+            })
+            .finally(()=>{
+                setLoading(false)
+            })
     }, [])
-    console.log(getProducts())
+
+    if(loading){
+        return <h1>Cargando...</h1>
+
+
+    }
+  
 
 
     return (
@@ -26,11 +40,6 @@ function ItemListcontainer({ greeting }) {
             </div>
             <ItemList products={products} />
         </div>
-
-
-
-
-
 
     )
 }

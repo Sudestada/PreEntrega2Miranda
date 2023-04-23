@@ -1,39 +1,45 @@
 import { useState, useEffect } from "react";
-import { getProductsById } from "./asyncMock";
+/* import { getProductsById } from "./asyncMock"; */
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
+import { getDoc, doc} from 'firebase/firestore'
+import { db} from './service/fireBaseConfig'
 
 
 
 const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true)
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState()
     const { productId } = useParams()
 
     useEffect(() => {
-        getProductsById(productId)
-            .then(response => {
-                setProduct(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-            .finally(() => {
-                setLoading(false)
-            })
+        setLoading(true)
+        const productRef = doc(db, 'products', productId)
+
+        getDoc(productRef)
+        .then(snapshot => {
+            console.log(snapshot)
+            const data = snapshot.data()
+            const productAdapted = {id: snapshot.id, ...data}
+            setProduct(productAdapted)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            setLoading(false)
+        })
     }, [productId])
 
     if (loading) {
         return <h1>Cargando ...</h1>
     }
-    console.log(product)
-
     return (
 
         <div>
             <h1>Detalle de productos</h1>
             <div>
-                <ItemDetail {...product[0]} />
+                <ItemDetail {...product} />
             </div>
 
         </div>

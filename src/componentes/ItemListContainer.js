@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import { getDocs, collection} from 'firebase/firestore'
+import { getDocs, collection, query, where} from 'firebase/firestore'
 import { db } from './service/fireBaseConfig'
 
 function ItemListcontainer({ greeting }) {
@@ -12,7 +12,10 @@ function ItemListcontainer({ greeting }) {
 
     
     useEffect(() => {
-        const productsRef = collection(db, 'products')
+        const productsRef = categoryId
+        ? query (collection(db, 'products'), where('category', '==', categoryId))
+        : collection(db, 'products')
+
         getDocs(productsRef)
         .then(snapshot => {
             console.log(snapshot)
@@ -20,7 +23,13 @@ function ItemListcontainer({ greeting }) {
                 const data = doc.data()
                 return {id: doc.id, ...data}
             })
-            console.log(productsAdapted)
+            setProducts(productsAdapted)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        .finally(() => {
+            setLoading(false)
         })
 
     }, [categoryId])

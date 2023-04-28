@@ -1,0 +1,13 @@
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    height: 20vh;
+    background-color: #333333;
+    color: white;
+    
+}
+
+.divFooter{
+    padding: 2vh;
+}

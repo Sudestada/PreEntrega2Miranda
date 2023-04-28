@@ -23,7 +23,7 @@ export const Item = ({ id, brand, img, price, description }) => {
             <div className='divDescription'>
                 <p>Precio : $ {price}</p>
                 <p>Descripcion : {description}</p>
-                <Link to={`/Item/${id}`}>Ver detalle</Link>
+                <Link to={`/Item/${id}`}><button>Ver detalle</button></Link>
             </div>
 
         </div>

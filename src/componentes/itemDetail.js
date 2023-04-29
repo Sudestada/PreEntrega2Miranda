@@ -14,27 +14,27 @@ const ItemDetail = ({ id, brand, img, category, description, price, stock }) => 
     }
 
     return (
-        <article className="CardItem">
-            <header className="Header">
-                <h2 className="ItemHeader">
+        <article>
+            <header>
+                <h2>
                     {brand}
                 </h2>
             </header>
             <picture>
-                <img src={img} alt={brand} className="ItemImg"/>
+                <img src={img} alt={brand} />
             </picture>
             <section>
-                <p className="Info">
+                <p>
                     Categoria: {category}
                 </p>
-                <p className="Info">
+                <p>
                     Descripción: {description}
                 </p>
-                <p className="Info">
+                <p>
                     Precio: {price}
                 </p>
             </section>           
-            <footer className='ItemFooter'>
+            <footer>
                 {
                     isInCart(id) ? (
                         <Link to='/cart'><button>Terminar compra</button></Link>
@@ -47,4 +47,4 @@ const ItemDetail = ({ id, brand, img, category, description, price, stock }) => 
     )
 }
 
-export default ItemDetail
+export default ItemDetail;

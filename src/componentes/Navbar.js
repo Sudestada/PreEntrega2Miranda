@@ -1,7 +1,7 @@
 import './navBar.css'
 import CartWidget from './CartWidget';
 import Button from './Button';
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
     return (
@@ -11,7 +11,7 @@ function Navbar() {
                 <nav className="headerNav">
                 <div className='divNameShop'>
                     <span className='divSpan'>
-                        D  E  C  I  B  E  L  I  U  S 🤘
+                    <Link to='/'>D  E  C  I  B  E  L  I  U  S 🤘</Link>
                     </span>
                 </div>
 

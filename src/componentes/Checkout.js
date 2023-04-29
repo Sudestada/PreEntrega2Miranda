@@ -24,40 +24,40 @@ const Checkout = () => {
                 items: cart,
                 total
             }
-    
+
             const ids = cart.map(prod => prod.id)
-    
+
             const productsRef = query(collection(db, 'products'), where(documentId(), 'in', ids))
-    
+
             const { docs } = await getDocs(productsRef)
-            
+
             const batch = writeBatch(db)
             const outOfStock = []
-    
+
             docs.forEach(doc => {
                 const dataDoc = doc.data()
                 const stockDb = dataDoc.stock
-    
+
                 const productAddedToCart = cart.find(prod => prod.id === doc.id)
                 const prodQuantity = productAddedToCart?.quantity
-    
-                if(stockDb >= prodQuantity) {
-                    batch.update(doc.ref, { stock: stockDb - prodQuantity})
+
+                if (stockDb >= prodQuantity) {
+                    batch.update(doc.ref, { stock: stockDb - prodQuantity })
                 } else {
-                    outOfStock.push({ id: doc.id, ...dataDoc})
+                    outOfStock.push({ id: doc.id, ...dataDoc })
                 }
             })
-    
-            if(outOfStock.length === 0) {
+
+            if (outOfStock.length === 0) {
                 batch.commit()
-    
+
                 const ordersRef = collection(db, 'orders')
-    
+
                 const orderAdded = await addDoc(ordersRef, objOrder)
-                
+
                 clearCart()
                 setOrderId(orderAdded.id)
-                
+
 
                 setTimeout(() => {
                     navigate('/')
@@ -67,19 +67,19 @@ const Checkout = () => {
             }
         } catch (error) {
             setNotification('error', 'Hubo un error generando la orden', 10)
-            
-        }  finally {
+
+        } finally {
             setLoading(false)
-        } 
+        }
     }
-    if(loading) {
+    if (loading) {
         return (
             <div>
                 <h1>Se esta generando su orden...</h1>
             </div>
         )
     }
-    if(orderId) {
+    if (orderId) {
         return (
             <div>
                 <h1>El id de su compra es: {orderId}</h1>
@@ -87,12 +87,12 @@ const Checkout = () => {
         )
     }
     return (
-        <div className="parent">
-        <div className="checkout">
-            <h1>Checkout</h1>
-            <h2>Ingrese sus datos</h2>
-            { <ContactForm onConfirm={createOrder}/>}
-        </div>
+        <div className="divCheckout">
+            <div>
+                <h1>Checkout</h1>
+                <h2>Ingrese sus datos</h2>
+                {<ContactForm onConfirm={createOrder} />}
+            </div>
         </div>
     )
 }

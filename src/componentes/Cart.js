@@ -1,11 +1,12 @@
 import { useCart } from "./Context/CartContext"
 import { Link } from 'react-router-dom'
+import './cart.css'
 
 const Cart = () => {
     const { cart, total } = useCart()
 
     return (
-        <div>
+        <div className="Cart">
             <h1>Cart View</h1>
             <div>
                 {
@@ -20,7 +21,6 @@ const Cart = () => {
                     })
                 }
             </div>
-
             <h1>Total de la compra ${total}</h1>
             <Link to='/checkout' className="Option"><button>Checkout</button></Link>
         </div>
